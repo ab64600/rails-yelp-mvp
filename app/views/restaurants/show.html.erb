@@ -1,0 +1,25 @@
+<h1 class="text-center my-4"><%= @restaurant.name %></h1>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <p><strong>Adresse :</strong> <%= @restaurant.address %></p>
+    <p><strong>Téléphone :</strong> <%= @restaurant.phone_number %></p>
+    <p><strong>Catégorie :</strong> <%= @restaurant.category %></p>
+  </div>
+</div>
+
+<h2 class="my-4">Avis</h2>
+<% if @reviews.present? %>
+  <ul class="list-group">
+    <%= render @reviews %>
+  </ul>
+<% else %>
+  <p>Aucun avis pour le moment.</p>
+<% end %>
+
+<h2 class="my-4">Laisser un avis</h2>
+<%= render "reviews/form", restaurant: @restaurant, review: @review %>
+
+<div class="mt-4 text-center">
+  <%= link_to "Retour à la liste", restaurants_path, class: "btn btn-secondary" %>
+</div>
